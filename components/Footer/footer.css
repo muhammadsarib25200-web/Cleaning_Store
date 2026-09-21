@@ -1,0 +1,188 @@
+.footer {
+background: #10251b;
+color: #ffffff;
+margin-top: 80px;
+}
+
+.footer-container {
+width: 90%;
+max-width: 1200px;
+margin: auto;
+padding: 65px 0 50px;
+
+display: grid;
+grid-template-columns: 1.5fr 1fr 1.2fr 1.4fr;
+gap: 50px;
+}
+
+/* Brand */
+
+.footer-brand h2 {
+font-size: 28px;
+margin: 0 0 18px;
+font-weight: 700;
+}
+
+.footer-brand h2 span {
+color: #9bcf53;
+}
+
+.footer-brand p {
+max-width: 300px;
+color: #b9c7bf;
+line-height: 1.7;
+font-size: 14px;
+}
+
+/* Social */
+
+.footer-socials {
+display: flex;
+gap: 10px;
+margin-top: 25px;
+}
+
+.footer-socials span {
+width: 36px;
+height: 36px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border: 1px solid #496052;
+border-radius: 50%;
+
+color: #dce8df;
+font-size: 14px;
+
+transition: 0.3s;
+}
+
+.footer-socials span:hover {
+background: #9bcf53;
+border-color: #9bcf53;
+color: #10251b;
+}
+
+/* Columns */
+
+.footer-column {
+display: flex;
+flex-direction: column;
+gap: 13px;
+}
+
+.footer-column h3 {
+font-size: 17px;
+margin: 0 0 10px;
+color: #ffffff;
+}
+
+.footer-column a {
+color: #b9c7bf;
+text-decoration: none;
+font-size: 14px;
+transition: 0.3s;
+}
+
+.footer-column a:hover {
+color: #9bcf53;
+padding-left: 4px;
+}
+
+.footer-contact p {
+margin: 0;
+color: #b9c7bf;
+font-size: 14px;
+line-height: 1.5;
+}
+
+/* Button */
+
+.footer-button {
+width: fit-content;
+margin-top: 12px;
+
+padding: 11px 20px;
+
+border: none;
+border-radius: 6px;
+
+background: #9bcf53;
+color: #10251b;
+
+font-size: 14px;
+font-weight: 600;
+
+cursor: pointer;
+transition: 0.3s;
+}
+
+.footer-button:hover {
+transform: translateY(-2px);
+background: #b0dc70;
+}
+
+/* Bottom */
+
+.footer-bottom {
+width: 90%;
+max-width: 1200px;
+
+margin: auto;
+padding: 20px 0;
+
+border-top: 1px solid #30483a;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+color: #8fa197;
+font-size: 13px;
+}
+
+.footer-bottom p {
+margin: 0;
+}
+
+.footer-bottom div {
+display: flex;
+gap: 25px;
+}
+
+.footer-bottom span {
+cursor: pointer;
+}
+
+.footer-bottom span:hover {
+color: #9bcf53;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+.footer-container {
+grid-template-columns: 1fr 1fr;
+gap: 40px;
+}
+}
+
+@media (max-width: 600px) {
+.footer-container {
+grid-template-columns: 1fr;
+padding: 45px 0;
+}
+
+.footer-bottom {
+flex-direction: column;
+gap: 15px;
+text-align: center;
+}
+
+.footer-bottom div {
+flex-direction: column;
+gap: 8px;
+}
+}
