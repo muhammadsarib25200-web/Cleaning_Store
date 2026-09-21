@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import './contact.css';
 
 const contactPoints = [
@@ -10,9 +11,42 @@ const contactPoints = [
   { label: 'Business Hours', value: 'Mon - Sat: 8:00 AM - 6:00 PM', href: '#' },
 ];
 
+const initialForm = {
+  name: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: '',
+};
+
 export default function ContactPage() {
+  const [formData, setFormData] = useState(initialForm);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const requiredFields = [
+      { key: 'name', label: 'Name', message: 'Please enter your name.' },
+      { key: 'email', label: 'Email', message: 'Please enter your email.' },
+      { key: 'phone', label: 'Phone', message: 'Please enter your phone number.' },
+      { key: 'subject', label: 'Subject', message: 'Please enter a subject.' },
+      { key: 'message', label: 'Message', message: 'Please enter your message.' },
+    ];
+
+    for (const field of requiredFields) {
+      if (!formData[field.key].trim()) {
+        alert(field.message);
+        return;
+      }
+    }
+
+    alert('Your message has been sent successfully!');
+    setFormData(initialForm);
   };
 
   return (
@@ -61,30 +95,65 @@ export default function ContactPage() {
             <div className="form-row">
               <div className="input-wrap">
                 <label htmlFor="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Your full name" />
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your full name"
+                />
               </div>
 
               <div className="input-wrap">
                 <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="Your email" />
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your email"
+                />
               </div>
             </div>
 
             <div className="form-row">
               <div className="input-wrap">
                 <label htmlFor="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" placeholder="Your phone" />
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Your phone"
+                />
               </div>
 
               <div className="input-wrap">
                 <label htmlFor="subject">Subject</label>
-                <input id="subject" name="subject" type="text" placeholder="Service inquiry" />
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Service inquiry"
+                />
               </div>
             </div>
 
             <div className="input-wrap">
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows="6" placeholder="Tell us about your cleaning needs" />
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Tell us about your cleaning needs"
+              />
             </div>
 
             <button type="submit" className="submit-btn">Send Message</button>
